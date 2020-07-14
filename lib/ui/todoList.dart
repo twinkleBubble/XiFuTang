@@ -111,7 +111,7 @@ class _ToDoListState extends State<ToDoList> {
                                 children: <Widget>[
                                   getDate("Start Date",formatDate(todoList[index].startTimeStamp, "dd MMM yyyy")),
                                   getDate("End Date",formatDate(todoList[index].endTimeStamp, "dd MMM yyyy")),
-                                  getDate("Time Left",getDiffrence(DateTime.now().millisecondsSinceEpoch~/1000>todoList[index].startTimeStamp?
+                                  getDate("Time Left",getDifference(DateTime.now().millisecondsSinceEpoch~/1000>todoList[index].startTimeStamp?
                                   DateTime.now().millisecondsSinceEpoch~/1000:
                                   todoList[index].startTimeStamp, todoList[index].endTimeStamp)),
                                 ],
@@ -236,18 +236,18 @@ class _ToDoListState extends State<ToDoList> {
     var date = new DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
     return format.format(date);
   }
-  static String getDiffrence(int startTimestamp,int endTimestamp) {
+  static String getDifference(int startTimestamp,int endTimestamp) {
     var startdate = new DateTime.fromMillisecondsSinceEpoch(startTimestamp * 1000);
     var enddate = new DateTime.fromMillisecondsSinceEpoch(endTimestamp * 1000);
     int miliseconds = enddate.difference(startdate).inMilliseconds;
     String audioDuration;
     double seconds = (miliseconds / 1000) % 60;
-    double minuits = (miliseconds / (1000 * 60)) % 60;
+    double minutes = (miliseconds / (1000 * 60)) % 60;
     double hour = miliseconds / (1000 * 60 * 60);
 
 
     int hours = hour.toInt();
-    int min = minuits.toInt();
+    int min = minutes.toInt();
     int sec = seconds.toInt();
     String hourtext,minutetext,secondstext;
     if(hours<=9){
